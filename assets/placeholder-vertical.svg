@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="1100" viewBox="0 0 760 1100" role="img" aria-label="竖版作品图片占位">
+  <rect width="760" height="1100" fill="#f5f7f8"/>
+  <rect x="88" y="90" width="584" height="920" rx="34" fill="#ffffff" stroke="#cdd6da" stroke-width="2"/>
+  <rect x="142" y="168" width="244" height="34" fill="#162025" opacity=".78"/>
+  <rect x="142" y="244" width="476" height="20" fill="#66727c" opacity=".6"/>
+  <rect x="142" y="288" width="404" height="20" fill="#66727c" opacity=".6"/>
+  <rect x="142" y="370" width="476" height="360" rx="24" fill="#0f766e" opacity=".78"/>
+  <circle cx="380" cy="550" r="74" fill="#ffffff" opacity=".82"/>
+  <rect x="142" y="790" width="218" height="78" rx="18" fill="#2563eb" opacity=".78"/>
+  <rect x="390" y="790" width="156" height="78" rx="18" fill="#e56b5d" opacity=".78"/>
+  <text x="142" y="940" fill="#66727c" font-family="Arial, sans-serif" font-size="26">Replace with vertical image</text>
+</svg>

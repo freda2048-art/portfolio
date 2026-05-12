@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img" aria-label="横版作品图片占位">
+  <rect width="1200" height="760" fill="#dde5e8"/>
+  <path d="M0 0h1200v760H0z" fill="#f5f7f8"/>
+  <path d="M120 140h960v480H120z" rx="28" fill="#ffffff" stroke="#cdd6da" stroke-width="2"/>
+  <path d="M192 224h300v34H192zM192 284h650v22H192zM192 330h560v22H192z" fill="#162025" opacity=".78"/>
+  <path d="M192 424h180v74H192zM404 424h180v74H404zM616 424h180v74H616z" rx="16" fill="#0f766e" opacity=".78"/>
+  <path d="M872 210h132v132H872z" rx="28" fill="#2563eb" opacity=".78"/>
+  <path d="M908 258h60v36h-60z" fill="#fff" opacity=".86"/>
+  <text x="192" y="580" fill="#66727c" font-family="Arial, sans-serif" font-size="28">Replace with portfolio image</text>
+</svg>
