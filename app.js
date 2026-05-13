@@ -272,10 +272,65 @@ function imageStyle(image) {
   return rules.length ? ` style="${rules.join("; ")}"` : "";
 }
 
+const imagePlaceholder =
+  "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 10'%3E%3Crect width='16' height='10' fill='%23e9f1fc'/%3E%3C/svg%3E";
+
+function renderLazyImage(src, alt, style = "", loading = "lazy") {
+  return `<img class="lazy-media" src="${imagePlaceholder}" data-src="${src}" alt="${alt}" loading="${loading}" decoding="async"${style} />`;
+}
+
+function setupLazyMedia(root = document) {
+  const images = Array.from(root.querySelectorAll("img[data-src]:not([data-lazy-bound])"));
+  if (!images.length) return;
+
+  const loadImage = (image) => {
+    if (!image.dataset.src) return;
+    image.dataset.lazyBound = "true";
+    image.addEventListener(
+      "load",
+      () => {
+        image.classList.add("is-loaded");
+        image.removeAttribute("data-src");
+      },
+      { once: true }
+    );
+    image.addEventListener(
+      "error",
+      () => {
+        image.classList.add("is-failed");
+        image.removeAttribute("data-src");
+      },
+      { once: true }
+    );
+    image.src = image.dataset.src;
+  };
+
+  if (!("IntersectionObserver" in window)) {
+    images.forEach(loadImage);
+    return;
+  }
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        observer.unobserve(entry.target);
+        loadImage(entry.target);
+      });
+    },
+    { rootMargin: "900px 0px" }
+  );
+
+  images.forEach((image) => {
+    image.dataset.lazyBound = "true";
+    observer.observe(image);
+  });
+}
+
 function renderImageButton(item, image, index, className) {
   return `
     <button class="${className} image-button" type="button" data-lightbox-id="${item.id}" data-image-index="${index}" aria-label="放大图片：${image.alt}">
-      <img src="${image.src}" alt="${image.alt}" loading="lazy"${imageStyle(image)} />
+      ${renderLazyImage(image.src, image.alt, imageStyle(image))}
     </button>
   `;
 }
@@ -338,14 +393,14 @@ function renderImageStrip(item) {
     return `
       <div class="media-hero-grid">
         <button class="media-hero-image image-button" type="button" data-lightbox-id="${item.id}" data-image-index="0" aria-label="放大图片：${heroImage.alt}">
-          <img src="${heroImage.src}" alt="${heroImage.alt}" loading="lazy"${imageStyle(heroImage)} />
+          ${renderLazyImage(heroImage.src, heroImage.alt, imageStyle(heroImage))}
         </button>
         <div class="media-hero-thumbs">
           ${gridImages
             .map(
               (image, index) => `
                 <button class="media-grid-image image-button" type="button" data-lightbox-id="${item.id}" data-image-index="${index + 1}" aria-label="放大图片：${image.alt}">
-                  <img src="${image.src}" alt="${image.alt}" loading="lazy"${imageStyle(image)} />
+                  ${renderLazyImage(image.src, image.alt, imageStyle(image))}
                 </button>
               `
             )
@@ -362,7 +417,7 @@ function renderImageStrip(item) {
           .map(
             (image, index) => `
               <button class="media-grid-image image-button" type="button" data-lightbox-id="${item.id}" data-image-index="${index}" aria-label="放大图片：${image.alt}">
-                <img src="${image.src}" alt="${image.alt}" loading="lazy"${imageStyle(image)} />
+                ${renderLazyImage(image.src, image.alt, imageStyle(image))}
               </button>
             `
           )
@@ -376,14 +431,14 @@ function renderImageStrip(item) {
     return `
       <div class="showcase-image-layout">
         <button class="showcase-cover image-button" type="button" data-lightbox-id="${item.id}" data-image-index="0" aria-label="放大图片：${cover.alt}">
-          <img src="${cover.src}" alt="${cover.alt}" loading="lazy"${imageStyle(cover)} />
+          ${renderLazyImage(cover.src, cover.alt, imageStyle(cover))}
         </button>
         <div class="showcase-thumbnails">
           ${contentImages
             .map(
               (image, index) => `
                 <button class="showcase-thumb image-button" type="button" data-lightbox-id="${item.id}" data-image-index="${index + 1}" aria-label="放大图片：${image.alt}">
-                  <img src="${image.src}" alt="${image.alt}" loading="lazy"${imageStyle(image)} />
+                  ${renderLazyImage(image.src, image.alt, imageStyle(image))}
                 </button>
               `
             )
@@ -398,7 +453,7 @@ function renderImageStrip(item) {
     return `
       <div class="single-image-layout">
         <button class="single-image image-button" type="button" data-lightbox-id="${item.id}" data-image-index="0" aria-label="放大图片：${image.alt}">
-          <img src="${image.src}" alt="${image.alt}" loading="lazy"${imageStyle(image)} />
+          ${renderLazyImage(image.src, image.alt, imageStyle(image))}
         </button>
       </div>
     `;
@@ -414,7 +469,7 @@ function renderImageStrip(item) {
         .map(
           (image, index) => `
             <button class="image-button" type="button" data-lightbox-id="${item.id}" data-image-index="${index}" aria-label="放大图片：${image.alt}">
-              <img src="${image.src}" alt="${image.alt}" loading="lazy"${imageStyle(image)} />
+              ${renderLazyImage(image.src, image.alt, imageStyle(image))}
             </button>
           `
         )
@@ -536,7 +591,7 @@ function renderPortfolioPreviewImage(item, className = "portfolio-preview-image"
 
   return `
     <div class="${className}">
-      <img src="${image.src}" alt="${image.alt}" loading="lazy"${imageStyle(image)} />
+      ${renderLazyImage(image.src, image.alt, imageStyle(image))}
     </div>
   `;
 }
@@ -551,11 +606,11 @@ function renderFeaturedMediaPreview(item) {
     return `
       <div class="featured-media-preview featured-hero-grid-preview">
         <div class="featured-hero-preview">
-          <img src="${heroImage.src}" alt="${heroImage.alt}" loading="lazy"${imageStyle(heroImage)} />
+          ${renderLazyImage(heroImage.src, heroImage.alt, imageStyle(heroImage))}
         </div>
         <div class="featured-hero-thumb-grid">
           ${gridImages
-            .map((image) => `<img src="${image.src}" alt="${image.alt}" loading="lazy"${imageStyle(image)} />`)
+            .map((image) => `${renderLazyImage(image.src, image.alt, imageStyle(image))}`)
             .join("")}
         </div>
       </div>
@@ -566,7 +621,7 @@ function renderFeaturedMediaPreview(item) {
     return `
       <div class="featured-media-preview featured-grid-preview ${item.imageLayout === "feature-grid" ? "feature-grid" : ""}">
         ${item.images
-          .map((image) => `<img src="${image.src}" alt="${image.alt}" loading="lazy"${imageStyle(image)} />`)
+          .map((image) => `${renderLazyImage(image.src, image.alt, imageStyle(image))}`)
           .join("")}
       </div>
     `;
@@ -580,7 +635,7 @@ function renderFeaturedMediaPreview(item) {
           .map(
             (image, index) => `
               <figure class="award-pair-frame ${index === 0 ? "certificate-frame" : "plugin-frame"}">
-                <img src="${image.src}" alt="${image.alt}" loading="lazy"${imageStyle(image)} />
+                ${renderLazyImage(image.src, image.alt, imageStyle(image))}
               </figure>
             `
           )
@@ -593,12 +648,12 @@ function renderFeaturedMediaPreview(item) {
   return `
     <div class="featured-media-preview">
       <div class="featured-cover-preview">
-        <img src="${cover.src}" alt="${cover.alt}" loading="lazy"${imageStyle(cover)} />
+        ${renderLazyImage(cover.src, cover.alt, imageStyle(cover))}
       </div>
       ${
         contentImages.length
           ? `<div class="featured-thumb-row">
-              ${contentImages.map((image) => `<img src="${image.src}" alt="${image.alt}" loading="lazy"${imageStyle(image)} />`).join("")}
+              ${contentImages.map((image) => `${renderLazyImage(image.src, image.alt, imageStyle(image))}`).join("")}
             </div>`
           : ""
       }
@@ -756,6 +811,7 @@ function renderPortfolio() {
   `;
   setupAutoScrollers();
   schedulePortfolioPanelScale();
+  setupLazyMedia(portfolioGrid);
 }
 
 function updatePortfolioPanelScale() {
@@ -832,7 +888,7 @@ function renderSkills() {
                 data-rotate="${cardMotion.rotate}"
                 aria-label="查看${item.title}"
               >
-                <img src="${item.cover}" alt="${item.title}" loading="lazy" />
+                ${renderLazyImage(item.cover, item.title)}
                 <span class="offwork-card-overlay"></span>
                 <span class="offwork-browser-bar" aria-hidden="true">
                   <span></span><span></span><span></span>
@@ -854,6 +910,7 @@ function renderSkills() {
     </div>
   `;
   updateHobbyScene();
+  setupLazyMedia(skillGrid);
   if (!state.hobbySceneReady) {
     window.addEventListener("scroll", scheduleHobbySceneUpdate, { passive: true });
     window.addEventListener("resize", scheduleHobbySceneUpdate);
@@ -891,7 +948,7 @@ function openHobbyDetail(itemId) {
           .map(
             (image) => `
               <figure>
-                <img src="${image.src}" alt="${image.alt}" loading="lazy" />
+                ${renderLazyImage(image.src, image.alt)}
               </figure>
             `
           )
@@ -901,6 +958,7 @@ function openHobbyDetail(itemId) {
   }
   document.querySelector(".portfolio-detail-modal").hidden = false;
   document.body.classList.add("locked");
+  setupLazyMedia(document.querySelector(".portfolio-detail-content"));
 }
 
 function updateHobbyScene() {
@@ -957,6 +1015,7 @@ function openPortfolioDetail(itemId) {
   document.querySelector(".portfolio-detail-modal").hidden = false;
   document.body.classList.add("locked");
   setupAutoScrollers();
+  setupLazyMedia(document.querySelector(".portfolio-detail-content"));
 }
 
 function closePortfolioDetail() {
@@ -1011,13 +1070,14 @@ function openArticleModal(articleId) {
     .map(
       (page, index) => `
         <figure class="article-page">
-          <img src="${page}" alt="${article.title} 第${index + 1}页" loading="${index === 0 ? "eager" : "lazy"}" />
+          ${renderLazyImage(page, `${article.title} 第${index + 1}页`, "", index === 0 ? "eager" : "lazy")}
           <figcaption>${index + 1} / ${article.pages.length}</figcaption>
         </figure>
       `
     )
     .join("");
   pageList.scrollTop = 0;
+  setupLazyMedia(pageList);
   modal.hidden = false;
   document.body.classList.add("locked");
 }
