@@ -161,11 +161,11 @@ const hobbies = {
       theme: "年跑量1200km",
       note:
         "从日常训练到站上全马赛道，跑步让我习惯把遥远目标拆成每一次稳定完成的公里数，也保留了向前推进的身体记忆。",
-      cover: "assets/hobbies/marathon-02.png",
+      cover: "assets/hobbies/marathon-02.jpg",
       images: [
-        { src: "assets/hobbies/marathon-01.png", alt: "烟台马拉松完赛后展示奖牌" },
-        { src: "assets/hobbies/marathon-02.png", alt: "烟台马拉松赛道照片" },
-        { src: "assets/hobbies/marathon-03.png", alt: "烟台马拉松号码墙前合影" }
+        { src: "assets/hobbies/marathon-01.jpg", alt: "烟台马拉松完赛后展示奖牌" },
+        { src: "assets/hobbies/marathon-02.jpg", alt: "烟台马拉松赛道照片" },
+        { src: "assets/hobbies/marathon-03.jpg", alt: "烟台马拉松号码墙前合影" }
       ]
     },
     {
@@ -191,7 +191,7 @@ const hobbies = {
       cover: "assets/hobbies/pet-01.jpg",
       images: [
         { src: "assets/hobbies/pet-01.jpg", alt: "猫咪坐在电脑旁" },
-        { src: "assets/hobbies/pet-02.png", alt: "抱着狗狗在琴房合影" }
+        { src: "assets/hobbies/pet-02.jpg", alt: "抱着狗狗在琴房合影" }
       ]
     }
   ]
@@ -434,7 +434,7 @@ const portfolioItems = [
     imageLayout: "hero-grid",
     images: [
       { src: "assets/portfolio/media-new/show-me-china-header.jpg", alt: "Show Me China账号头图", fit: "contain" },
-      { src: "assets/portfolio/media-new/newmedia-slide05-01.png", alt: "Show Me China作品图 1", position: "center 24%" },
+      { src: "assets/portfolio/media-new/newmedia-slide05-01.jpg", alt: "Show Me China作品图 1", position: "center 24%" },
       { src: "assets/portfolio/media-new/newmedia-slide05-02.jpg", alt: "Show Me China作品图 2", position: "center 38%" },
       { src: "assets/portfolio/media-new/newmedia-slide05-03.jpg", alt: "Show Me China作品图 3", position: "center 42%" },
       { src: "assets/portfolio/media-new/newmedia-slide05-04.jpeg", alt: "Show Me China作品图 4", position: "center 36%" }
@@ -501,8 +501,8 @@ const portfolioItems = [
     imageLayout: "grid",
     previewImageIndex: 2,
     images: [
-      { src: "assets/portfolio/media-new/newmedia-slide03-01.png", alt: "网易健康节目作品图 1", position: "center 18%" },
-      { src: "assets/portfolio/media-new/newmedia-slide03-02.png", alt: "网易健康节目作品图 2", position: "center 18%" },
+      { src: "assets/portfolio/media-new/newmedia-slide03-01.jpg", alt: "网易健康节目作品图 1", position: "center 18%" },
+      { src: "assets/portfolio/media-new/newmedia-slide03-02.jpg", alt: "网易健康节目作品图 2", position: "center 18%" },
       { src: "assets/portfolio/media-new/newmedia-slide03-03.jpeg", alt: "网易健康节目作品图 3", position: "58% 68%" }
     ],
     links: [],
