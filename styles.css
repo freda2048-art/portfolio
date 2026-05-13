@@ -1903,11 +1903,16 @@ h3 {
 .portfolio-mini-card {
   display: grid;
   grid-template-rows: clamp(118px, 13vh, 156px) auto;
-  height: 100%;
+  height: auto;
   min-width: 0;
   overflow: hidden;
   border-radius: 18px;
   padding: 0;
+}
+
+.portfolio-mini-card .portfolio-preview-image {
+  height: clamp(118px, 13vh, 156px);
+  min-height: clamp(118px, 13vh, 156px);
 }
 
 .portfolio-mini-card > div:not(.portfolio-preview-image) {
@@ -2910,6 +2915,11 @@ blockquote {
     grid-template-rows: 116px auto;
     height: auto;
     min-height: 246px;
+  }
+
+  .portfolio-mini-card .portfolio-preview-image {
+    height: 116px;
+    min-height: 116px;
   }
 
   .portfolio-mini-card > div:not(.portfolio-preview-image) {
