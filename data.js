@@ -7,9 +7,9 @@ const profile = {
 };
 
 const jiangxiArticlePages = {
-  wuyulun: Array.from({ length: 13 }, (_, index) => `assets/portfolio/jiangxi/pages/wuyulun-${String(index + 1).padStart(2, "0")}.jpg`),
-  wanggang: Array.from({ length: 8 }, (_, index) => `assets/portfolio/jiangxi/pages/wanggang-${String(index + 1).padStart(2, "0")}.jpg`),
-  zhangweibin: Array.from({ length: 12 }, (_, index) => `assets/portfolio/jiangxi/pages/zhangweibin-${String(index + 1).padStart(2, "0")}.jpg`)
+  wuyulun: Array.from({ length: 13 }, (_, index) => `assets/generated/medium/portfolio/jiangxi/pages/wuyulun-${String(index + 1).padStart(2, "0")}.webp`),
+  wanggang: Array.from({ length: 8 }, (_, index) => `assets/generated/medium/portfolio/jiangxi/pages/wanggang-${String(index + 1).padStart(2, "0")}.webp`),
+  zhangweibin: Array.from({ length: 12 }, (_, index) => `assets/generated/medium/portfolio/jiangxi/pages/zhangweibin-${String(index + 1).padStart(2, "0")}.webp`)
 };
 
 const education = [
@@ -134,8 +134,9 @@ const hobbies = {
       theme: "资深二次元",
       note:
         "工作与学习之外持续自学日语，通过 JLPT N1，并在阅读、语法、词汇训练中建立长期输入和自我管理节奏。",
-      cover: "assets/hobbies/japanese-n1-result.jpg",
-      images: [{ src: "assets/hobbies/japanese-n1-result.jpg", alt: "日语 N1 考试结果" }]
+      cover: "assets/generated/medium/hobbies/japanese-n1-result.webp",
+      coverThumb: "assets/generated/thumbs/hobbies/japanese-n1-result.webp",
+      images: [{ src: "assets/generated/medium/hobbies/japanese-n1-result.webp", thumbSrc: "assets/generated/thumbs/hobbies/japanese-n1-result.webp", alt: "日语 N1 考试结果" }]
     },
     {
       id: "hobby-exchange",
@@ -145,11 +146,12 @@ const hobbies = {
       theme: "英语专八get",
       note:
         "在美国宾夕法尼亚州 Slippery Rock University 交换学习，完成跨文化课程与校园交流，也把英语沟通从考试能力变成真实协作经验。",
-      cover: "assets/hobbies/exchange-02.jpg",
+      cover: "assets/generated/medium/hobbies/exchange-02.webp",
+      coverThumb: "assets/generated/thumbs/hobbies/exchange-02.webp",
       images: [
-        { src: "assets/hobbies/exchange-01.jpg", alt: "美国交换期间与老师合影" },
-        { src: "assets/hobbies/exchange-02.jpg", alt: "美国交换期间在尼亚加拉瀑布合影" },
-        { src: "assets/hobbies/exchange-certificate.jpg", alt: "美国交换项目结业证书" }
+        { src: "assets/generated/medium/hobbies/exchange-01.webp", thumbSrc: "assets/generated/thumbs/hobbies/exchange-01.webp", alt: "美国交换期间与老师合影" },
+        { src: "assets/generated/medium/hobbies/exchange-02.webp", thumbSrc: "assets/generated/thumbs/hobbies/exchange-02.webp", alt: "美国交换期间在尼亚加拉瀑布合影" },
+        { src: "assets/generated/medium/hobbies/exchange-certificate.webp", thumbSrc: "assets/generated/thumbs/hobbies/exchange-certificate.webp", alt: "美国交换项目结业证书" }
       ]
     },
     {
@@ -160,11 +162,12 @@ const hobbies = {
       theme: "年跑量1200km",
       note:
         "从日常训练到站上全马赛道，跑步让我习惯把遥远目标拆成每一次稳定完成的公里数，也保留了向前推进的身体记忆。",
-      cover: "assets/hobbies/marathon-02.jpg",
+      cover: "assets/generated/medium/hobbies/marathon-02.webp",
+      coverThumb: "assets/generated/thumbs/hobbies/marathon-02.webp",
       images: [
-        { src: "assets/hobbies/marathon-01.jpg", alt: "烟台马拉松完赛后展示奖牌" },
-        { src: "assets/hobbies/marathon-02.jpg", alt: "烟台马拉松赛道照片" },
-        { src: "assets/hobbies/marathon-03.jpg", alt: "烟台马拉松号码墙前合影" }
+        { src: "assets/generated/medium/hobbies/marathon-01.webp", thumbSrc: "assets/generated/thumbs/hobbies/marathon-01.webp", alt: "烟台马拉松完赛后展示奖牌" },
+        { src: "assets/generated/medium/hobbies/marathon-02.webp", thumbSrc: "assets/generated/thumbs/hobbies/marathon-02.webp", alt: "烟台马拉松赛道照片" },
+        { src: "assets/generated/medium/hobbies/marathon-03.webp", thumbSrc: "assets/generated/thumbs/hobbies/marathon-03.webp", alt: "烟台马拉松号码墙前合影" }
       ]
     },
     {
@@ -175,8 +178,9 @@ const hobbies = {
       theme: "日式指弹",
       note:
         "指弹练习是我给自己保留的慢节奏空间：一首歌被拆成节拍、旋律和手指记忆，像是在复杂工作之外重新校准专注力。",
-      cover: "assets/hobbies/guitar-cover.jpg",
-      images: [{ src: "assets/hobbies/guitar-cover.jpg", alt: "吉他指弹练习封面" }],
+      cover: "assets/generated/medium/hobbies/guitar-cover.webp",
+      coverThumb: "assets/generated/thumbs/hobbies/guitar-cover.webp",
+      images: [{ src: "assets/generated/medium/hobbies/guitar-cover.webp", thumbSrc: "assets/generated/thumbs/hobbies/guitar-cover.webp", alt: "吉他指弹练习封面" }],
       video: { src: "assets/hobbies/freight-train-guitar.mp4", type: "video/mp4" }
     },
     {
@@ -187,10 +191,11 @@ const hobbies = {
       theme: "爱狗人士",
       note:
         "和猫猫狗狗相处是我快速回血的方式，它们把日常变得松弛，也给练琴、写作和下班后的时间加上一点柔软的陪伴。",
-      cover: "assets/hobbies/pet-01.jpg",
+      cover: "assets/generated/medium/hobbies/pet-01.webp",
+      coverThumb: "assets/generated/thumbs/hobbies/pet-01.webp",
       images: [
-        { src: "assets/hobbies/pet-01.jpg", alt: "猫咪坐在电脑旁" },
-        { src: "assets/hobbies/pet-02.jpg", alt: "抱着狗狗在琴房合影" }
+        { src: "assets/generated/medium/hobbies/pet-01.webp", thumbSrc: "assets/generated/thumbs/hobbies/pet-01.webp", alt: "猫咪坐在电脑旁" },
+        { src: "assets/generated/medium/hobbies/pet-02.webp", thumbSrc: "assets/generated/thumbs/hobbies/pet-02.webp", alt: "抱着狗狗在琴房合影" }
       ]
     }
   ]
@@ -230,12 +235,12 @@ const portfolioItems = [
     result: "",
     imageType: "vertical",
     images: [
-      { src: "assets/portfolio/tweets-slide03-01.jpg", alt: "《出什么Bug了？？快请个程序员来看看》传播背景" },
-      { src: "assets/portfolio/tweets-slide04-01.jpeg", alt: "推文长图节选 1" },
-      { src: "assets/portfolio/tweets-slide04-04.jpeg", alt: "推文长图节选 2" },
-      { src: "assets/portfolio/tweets-slide04-05.jpeg", alt: "推文长图节选 3" },
-      { src: "assets/portfolio/tweets-slide04-03.jpeg", alt: "推文长图节选 4" },
-      { src: "assets/portfolio/tweets-slide04-02.jpeg", alt: "推文长图节选 5" }
+      { src: "assets/generated/medium/portfolio/tweets-slide03-01.webp", thumbSrc: "assets/generated/thumbs/portfolio/tweets-slide03-01.webp", alt: "《出什么Bug了？？快请个程序员来看看》传播背景" },
+      { src: "assets/generated/medium/portfolio/tweets-slide04-01.webp", thumbSrc: "assets/generated/thumbs/portfolio/tweets-slide04-01.webp", alt: "推文长图节选 1" },
+      { src: "assets/generated/medium/portfolio/tweets-slide04-04.webp", thumbSrc: "assets/generated/thumbs/portfolio/tweets-slide04-04.webp", alt: "推文长图节选 2" },
+      { src: "assets/generated/medium/portfolio/tweets-slide04-05.webp", thumbSrc: "assets/generated/thumbs/portfolio/tweets-slide04-05.webp", alt: "推文长图节选 3" },
+      { src: "assets/generated/medium/portfolio/tweets-slide04-03.webp", thumbSrc: "assets/generated/thumbs/portfolio/tweets-slide04-03.webp", alt: "推文长图节选 4" },
+      { src: "assets/generated/medium/portfolio/tweets-slide04-02.webp", thumbSrc: "assets/generated/thumbs/portfolio/tweets-slide04-02.webp", alt: "推文长图节选 5" }
     ],
     links: [],
     excerpt: ""
@@ -251,12 +256,12 @@ const portfolioItems = [
     result: "",
     imageType: "vertical",
     images: [
-      { src: "assets/portfolio/tweets-slide05-01.jpg", alt: "《这述职报告到底咋写呀？》传播背景" },
-      { src: "assets/portfolio/tweets-slide06-01.jpg", alt: "述职报告推文节选 1" },
-      { src: "assets/portfolio/tweets-slide06-02.jpeg", alt: "述职报告推文节选 2" },
-      { src: "assets/portfolio/tweets-slide06-03.jpeg", alt: "述职报告推文节选 3" },
-      { src: "assets/portfolio/tweets-slide06-04.jpg", alt: "述职报告推文节选 4" },
-      { src: "assets/portfolio/tweets-slide06-05.jpg", alt: "述职报告推文节选 5" }
+      { src: "assets/generated/medium/portfolio/tweets-slide05-01.webp", thumbSrc: "assets/generated/thumbs/portfolio/tweets-slide05-01.webp", alt: "《这述职报告到底咋写呀？》传播背景" },
+      { src: "assets/generated/medium/portfolio/tweets-slide06-01.webp", thumbSrc: "assets/generated/thumbs/portfolio/tweets-slide06-01.webp", alt: "述职报告推文节选 1" },
+      { src: "assets/generated/medium/portfolio/tweets-slide06-02.webp", thumbSrc: "assets/generated/thumbs/portfolio/tweets-slide06-02.webp", alt: "述职报告推文节选 2" },
+      { src: "assets/generated/medium/portfolio/tweets-slide06-03.webp", thumbSrc: "assets/generated/thumbs/portfolio/tweets-slide06-03.webp", alt: "述职报告推文节选 3" },
+      { src: "assets/generated/medium/portfolio/tweets-slide06-04.webp", thumbSrc: "assets/generated/thumbs/portfolio/tweets-slide06-04.webp", alt: "述职报告推文节选 4" },
+      { src: "assets/generated/medium/portfolio/tweets-slide06-05.webp", thumbSrc: "assets/generated/thumbs/portfolio/tweets-slide06-05.webp", alt: "述职报告推文节选 5" }
     ],
     links: [],
     excerpt: ""
@@ -272,12 +277,12 @@ const portfolioItems = [
     result: "",
     imageType: "vertical",
     images: [
-      { src: "assets/portfolio/tweets-slide07-01.jpg", alt: "《大额补贴失窃案，谁在搞鬼？》传播背景" },
-      { src: "assets/portfolio/tweets-slide08-01.jpg", alt: "补贴失窃案推文节选 1" },
-      { src: "assets/portfolio/tweets-slide08-03.jpeg", alt: "补贴失窃案推文节选 2" },
-      { src: "assets/portfolio/tweets-slide08-04.jpeg", alt: "补贴失窃案推文节选 3" },
-      { src: "assets/portfolio/tweets-slide08-05.jpeg", alt: "补贴失窃案推文节选 4" },
-      { src: "assets/portfolio/tweets-slide08-02.jpeg", alt: "补贴失窃案推文节选 5" }
+      { src: "assets/generated/medium/portfolio/tweets-slide07-01.webp", thumbSrc: "assets/generated/thumbs/portfolio/tweets-slide07-01.webp", alt: "《大额补贴失窃案，谁在搞鬼？》传播背景" },
+      { src: "assets/generated/medium/portfolio/tweets-slide08-01.webp", thumbSrc: "assets/generated/thumbs/portfolio/tweets-slide08-01.webp", alt: "补贴失窃案推文节选 1" },
+      { src: "assets/generated/medium/portfolio/tweets-slide08-03.webp", thumbSrc: "assets/generated/thumbs/portfolio/tweets-slide08-03.webp", alt: "补贴失窃案推文节选 2" },
+      { src: "assets/generated/medium/portfolio/tweets-slide08-04.webp", thumbSrc: "assets/generated/thumbs/portfolio/tweets-slide08-04.webp", alt: "补贴失窃案推文节选 3" },
+      { src: "assets/generated/medium/portfolio/tweets-slide08-05.webp", thumbSrc: "assets/generated/thumbs/portfolio/tweets-slide08-05.webp", alt: "补贴失窃案推文节选 4" },
+      { src: "assets/generated/medium/portfolio/tweets-slide08-02.webp", thumbSrc: "assets/generated/thumbs/portfolio/tweets-slide08-02.webp", alt: "补贴失窃案推文节选 5" }
     ],
     links: [],
     excerpt: ""
@@ -293,13 +298,13 @@ const portfolioItems = [
     result: "",
     imageType: "vertical",
     images: [
-      { src: "assets/portfolio/tweets-slide09-01.jpg", alt: "《工作三年挣了“三千万”》传播背景" },
-      { src: "assets/portfolio/tweets-slide10-01.jpeg", alt: "渠道经理推文节选 1" },
-      { src: "assets/portfolio/tweets-slide10-03.jpeg", alt: "渠道经理推文节选 2" },
-      { src: "assets/portfolio/tweets-slide10-04.jpeg", alt: "渠道经理推文节选 3" },
-      { src: "assets/portfolio/tweets-slide10-05.jpeg", alt: "渠道经理推文节选 4" },
-      { src: "assets/portfolio/tweets-slide10-06.jpeg", alt: "渠道经理推文节选 5" },
-      { src: "assets/portfolio/tweets-slide10-02.jpeg", alt: "渠道经理推文节选 6" }
+      { src: "assets/generated/medium/portfolio/tweets-slide09-01.webp", thumbSrc: "assets/generated/thumbs/portfolio/tweets-slide09-01.webp", alt: "《工作三年挣了“三千万”》传播背景" },
+      { src: "assets/generated/medium/portfolio/tweets-slide10-01.webp", thumbSrc: "assets/generated/thumbs/portfolio/tweets-slide10-01.webp", alt: "渠道经理推文节选 1" },
+      { src: "assets/generated/medium/portfolio/tweets-slide10-03.webp", thumbSrc: "assets/generated/thumbs/portfolio/tweets-slide10-03.webp", alt: "渠道经理推文节选 2" },
+      { src: "assets/generated/medium/portfolio/tweets-slide10-04.webp", thumbSrc: "assets/generated/thumbs/portfolio/tweets-slide10-04.webp", alt: "渠道经理推文节选 3" },
+      { src: "assets/generated/medium/portfolio/tweets-slide10-05.webp", thumbSrc: "assets/generated/thumbs/portfolio/tweets-slide10-05.webp", alt: "渠道经理推文节选 4" },
+      { src: "assets/generated/medium/portfolio/tweets-slide10-06.webp", thumbSrc: "assets/generated/thumbs/portfolio/tweets-slide10-06.webp", alt: "渠道经理推文节选 5" },
+      { src: "assets/generated/medium/portfolio/tweets-slide10-02.webp", thumbSrc: "assets/generated/thumbs/portfolio/tweets-slide10-02.webp", alt: "渠道经理推文节选 6" }
     ],
     links: [],
     excerpt: ""
@@ -315,15 +320,15 @@ const portfolioItems = [
     result: "面向1万7千名员工开展，提交25组作品，评选出6组获奖作品。",
     imageType: "vertical",
     images: [
-      { src: "assets/portfolio/tweets-slide11-01.jpg", alt: "合规Vlog大赛传播背景" },
-      { src: "assets/portfolio/tweets-slide12-07.jpeg", alt: "合规Vlog推文节选 1" },
-      { src: "assets/portfolio/tweets-slide12-04.jpg", alt: "合规Vlog推文节选 2" },
-      { src: "assets/portfolio/tweets-slide12-05.jpg", alt: "合规Vlog推文节选 3" },
-      { src: "assets/portfolio/tweets-slide12-06.jpg", alt: "合规Vlog推文节选 4" },
-      { src: "assets/portfolio/tweets-slide12-01.jpg", alt: "合规Vlog推文节选 5" },
-      { src: "assets/portfolio/tweets-slide12-02.jpg", alt: "合规Vlog推文节选 6" },
-      { src: "assets/portfolio/tweets-slide12-03.jpg", alt: "合规Vlog推文节选 7" },
-      { src: "assets/portfolio/tweets-slide12-08.jpg", alt: "合规Vlog推文节选 8" }
+      { src: "assets/generated/medium/portfolio/tweets-slide11-01.webp", thumbSrc: "assets/generated/thumbs/portfolio/tweets-slide11-01.webp", alt: "合规Vlog大赛传播背景" },
+      { src: "assets/generated/medium/portfolio/tweets-slide12-07.webp", thumbSrc: "assets/generated/thumbs/portfolio/tweets-slide12-07.webp", alt: "合规Vlog推文节选 1" },
+      { src: "assets/generated/medium/portfolio/tweets-slide12-04.webp", thumbSrc: "assets/generated/thumbs/portfolio/tweets-slide12-04.webp", alt: "合规Vlog推文节选 2" },
+      { src: "assets/generated/medium/portfolio/tweets-slide12-05.webp", thumbSrc: "assets/generated/thumbs/portfolio/tweets-slide12-05.webp", alt: "合规Vlog推文节选 3" },
+      { src: "assets/generated/medium/portfolio/tweets-slide12-06.webp", thumbSrc: "assets/generated/thumbs/portfolio/tweets-slide12-06.webp", alt: "合规Vlog推文节选 4" },
+      { src: "assets/generated/medium/portfolio/tweets-slide12-01.webp", thumbSrc: "assets/generated/thumbs/portfolio/tweets-slide12-01.webp", alt: "合规Vlog推文节选 5" },
+      { src: "assets/generated/medium/portfolio/tweets-slide12-02.webp", thumbSrc: "assets/generated/thumbs/portfolio/tweets-slide12-02.webp", alt: "合规Vlog推文节选 6" },
+      { src: "assets/generated/medium/portfolio/tweets-slide12-03.webp", thumbSrc: "assets/generated/thumbs/portfolio/tweets-slide12-03.webp", alt: "合规Vlog推文节选 7" },
+      { src: "assets/generated/medium/portfolio/tweets-slide12-08.webp", thumbSrc: "assets/generated/thumbs/portfolio/tweets-slide12-08.webp", alt: "合规Vlog推文节选 8" }
     ],
     links: [],
     excerpt: ""
@@ -340,15 +345,15 @@ const portfolioItems = [
     result: "覆盖1万7千人，170+人参与，提交25组作品，4580人参与投票。",
     imageType: "vertical",
     images: [
-      { src: "assets/portfolio/events-slide03-01.jpg", alt: "合规Vlog大赛核心策略" },
-      { src: "assets/portfolio/events-slide04-07.jpeg", alt: "合规Vlog活动物料 1" },
-      { src: "assets/portfolio/events-slide04-04.jpg", alt: "合规Vlog活动物料 2" },
-      { src: "assets/portfolio/events-slide04-05.jpg", alt: "合规Vlog活动物料 3" },
-      { src: "assets/portfolio/events-slide04-06.jpg", alt: "合规Vlog活动物料 4" },
-      { src: "assets/portfolio/events-slide04-01.jpg", alt: "合规Vlog活动物料 5" },
-      { src: "assets/portfolio/events-slide04-02.jpg", alt: "合规Vlog活动物料 6" },
-      { src: "assets/portfolio/events-slide04-03.jpg", alt: "合规Vlog活动物料 7" },
-      { src: "assets/portfolio/events-slide04-08.jpg", alt: "合规Vlog活动物料 8" }
+      { src: "assets/generated/medium/portfolio/events-slide03-01.webp", thumbSrc: "assets/generated/thumbs/portfolio/events-slide03-01.webp", alt: "合规Vlog大赛核心策略" },
+      { src: "assets/generated/medium/portfolio/events-slide04-07.webp", thumbSrc: "assets/generated/thumbs/portfolio/events-slide04-07.webp", alt: "合规Vlog活动物料 1" },
+      { src: "assets/generated/medium/portfolio/events-slide04-04.webp", thumbSrc: "assets/generated/thumbs/portfolio/events-slide04-04.webp", alt: "合规Vlog活动物料 2" },
+      { src: "assets/generated/medium/portfolio/events-slide04-05.webp", thumbSrc: "assets/generated/thumbs/portfolio/events-slide04-05.webp", alt: "合规Vlog活动物料 3" },
+      { src: "assets/generated/medium/portfolio/events-slide04-06.webp", thumbSrc: "assets/generated/thumbs/portfolio/events-slide04-06.webp", alt: "合规Vlog活动物料 4" },
+      { src: "assets/generated/medium/portfolio/events-slide04-01.webp", thumbSrc: "assets/generated/thumbs/portfolio/events-slide04-01.webp", alt: "合规Vlog活动物料 5" },
+      { src: "assets/generated/medium/portfolio/events-slide04-02.webp", thumbSrc: "assets/generated/thumbs/portfolio/events-slide04-02.webp", alt: "合规Vlog活动物料 6" },
+      { src: "assets/generated/medium/portfolio/events-slide04-03.webp", thumbSrc: "assets/generated/thumbs/portfolio/events-slide04-03.webp", alt: "合规Vlog活动物料 7" },
+      { src: "assets/generated/medium/portfolio/events-slide04-08.webp", thumbSrc: "assets/generated/thumbs/portfolio/events-slide04-08.webp", alt: "合规Vlog活动物料 8" }
     ],
     links: [],
     excerpt:
@@ -366,9 +371,9 @@ const portfolioItems = [
     result: "400+管理者参与活动启动会，撬动团队宣导、自查自纠与职场触达。",
     imageType: "vertical",
     images: [
-      { src: "assets/portfolio/events-slide05-01.jpg", alt: "廉正文化月核心策略" },
-      { src: "assets/portfolio/events-slide06-02.jpg", alt: "廉正文化月物料 1" },
-      { src: "assets/portfolio/events-slide06-01.jpg", alt: "廉正文化月物料 2" }
+      { src: "assets/generated/medium/portfolio/events-slide05-01.webp", thumbSrc: "assets/generated/thumbs/portfolio/events-slide05-01.webp", alt: "廉正文化月核心策略" },
+      { src: "assets/generated/medium/portfolio/events-slide06-02.webp", thumbSrc: "assets/generated/thumbs/portfolio/events-slide06-02.webp", alt: "廉正文化月物料 1" },
+      { src: "assets/generated/medium/portfolio/events-slide06-01.webp", thumbSrc: "assets/generated/thumbs/portfolio/events-slide06-01.webp", alt: "廉正文化月物料 2" }
     ],
     links: [],
     excerpt:
@@ -383,7 +388,7 @@ const portfolioItems = [
     coreIdea: "通过高管发声强调文化重要性与管理认知，完成从高层表达向管理层理解的传导。",
     result: "覆盖公司核心管理层100+人。",
     imageType: "landscape",
-    images: [{ src: "assets/portfolio/events-slide07-01.jpg", alt: "高管分享会现场或物料" }],
+    images: [{ src: "assets/generated/medium/portfolio/events-slide07-01.webp", thumbSrc: "assets/generated/thumbs/portfolio/events-slide07-01.webp", alt: "高管分享会现场或物料" }],
     links: [],
     excerpt:
       "明确分享主题，对齐高管时间与参与形式，梳理核心信息框架，协调各部门完成参会人员通知，并提炼关键观点进行二次传播。"
@@ -398,7 +403,7 @@ const portfolioItems = [
     coreIdea: "用情景题、选择互动与转盘抽奖机制，把文化宣导转化为更轻量的参与体验。",
     result: "覆盖8万人，回收问卷3000份，显著提升廉正内容参与率，并获取大规模真实反馈。",
     imageType: "landscape",
-    images: [{ src: "assets/portfolio/events-slide08-01.jpg", alt: "趣味有奖问答活动策略" }],
+    images: [{ src: "assets/generated/medium/portfolio/events-slide08-01.webp", thumbSrc: "assets/generated/thumbs/portfolio/events-slide08-01.webp", alt: "趣味有奖问答活动策略" }],
     links: [],
     excerpt:
       "联动各业务线推动传播与参与，实时监测参与数据，动态调整推广节奏。"
@@ -413,7 +418,7 @@ const portfolioItems = [
     coreIdea: "以大型赛事为品牌传播场景，结合社媒、新闻媒体与达人扩散提升品牌曝光。",
     result: "",
     imageType: "landscape",
-    images: [{ src: "assets/portfolio/events-slide09-01.jpg", alt: "壳牌汽车环保马拉松项目" }],
+    images: [{ src: "assets/generated/medium/portfolio/events-slide09-01.webp", thumbSrc: "assets/generated/thumbs/portfolio/events-slide09-01.webp", alt: "壳牌汽车环保马拉松项目" }],
     links: [],
     excerpt:
       "我的职责包括调研前3年活动调性，提报Slogan，参与活动传播与内容运营，协同媒体与达人推动话题扩散，并进行社媒、新闻媒体舆情监测。"
@@ -432,11 +437,11 @@ const portfolioItems = [
     imageType: "landscape",
     imageLayout: "hero-grid",
     images: [
-      { src: "assets/portfolio/media-new/show-me-china-header.jpg", alt: "Show Me China账号头图", fit: "contain" },
-      { src: "assets/portfolio/media-new/newmedia-slide05-01.jpg", alt: "Show Me China作品图 1", position: "center 24%" },
-      { src: "assets/portfolio/media-new/newmedia-slide05-02.jpg", alt: "Show Me China作品图 2", position: "center 38%" },
-      { src: "assets/portfolio/media-new/newmedia-slide05-03.jpg", alt: "Show Me China作品图 3", position: "center 42%" },
-      { src: "assets/portfolio/media-new/newmedia-slide05-04.jpeg", alt: "Show Me China作品图 4", position: "center 36%" }
+      { src: "assets/generated/medium/portfolio/media-new/show-me-china-header.webp", thumbSrc: "assets/generated/thumbs/portfolio/media-new/show-me-china-header.webp", alt: "Show Me China账号头图", fit: "contain" },
+      { src: "assets/generated/medium/portfolio/media-new/newmedia-slide05-01.webp", thumbSrc: "assets/generated/thumbs/portfolio/media-new/newmedia-slide05-01.webp", alt: "Show Me China作品图 1", position: "center 24%" },
+      { src: "assets/generated/medium/portfolio/media-new/newmedia-slide05-02.webp", thumbSrc: "assets/generated/thumbs/portfolio/media-new/newmedia-slide05-02.webp", alt: "Show Me China作品图 2", position: "center 38%" },
+      { src: "assets/generated/medium/portfolio/media-new/newmedia-slide05-03.webp", thumbSrc: "assets/generated/thumbs/portfolio/media-new/newmedia-slide05-03.webp", alt: "Show Me China作品图 3", position: "center 42%" },
+      { src: "assets/generated/medium/portfolio/media-new/newmedia-slide05-04.webp", thumbSrc: "assets/generated/thumbs/portfolio/media-new/newmedia-slide05-04.webp", alt: "Show Me China作品图 4", position: "center 36%" }
     ],
     links: [
       {
@@ -476,10 +481,10 @@ const portfolioItems = [
     imageLayout: "grid",
     previewImageIndex: 0,
     images: [
-      { src: "assets/portfolio/media-new/newmedia-slide06-01.jpg", alt: "新华社双语直播作品图 1", position: "center 28%" },
-      { src: "assets/portfolio/media-new/newmedia-slide06-02.jpg", alt: "新华社双语直播作品图 2", position: "center 23%" },
-      { src: "assets/portfolio/media-new/newmedia-slide06-03.jpg", alt: "新华社双语直播作品图 3", position: "68% 58%" },
-      { src: "assets/portfolio/media-new/newmedia-slide06-04.jpg", alt: "新华社双语直播作品图 4", position: "center 23%" }
+      { src: "assets/generated/medium/portfolio/media-new/newmedia-slide06-01.webp", thumbSrc: "assets/generated/thumbs/portfolio/media-new/newmedia-slide06-01.webp", alt: "新华社双语直播作品图 1", position: "center 28%" },
+      { src: "assets/generated/medium/portfolio/media-new/newmedia-slide06-02.webp", thumbSrc: "assets/generated/thumbs/portfolio/media-new/newmedia-slide06-02.webp", alt: "新华社双语直播作品图 2", position: "center 23%" },
+      { src: "assets/generated/medium/portfolio/media-new/newmedia-slide06-03.webp", thumbSrc: "assets/generated/thumbs/portfolio/media-new/newmedia-slide06-03.webp", alt: "新华社双语直播作品图 3", position: "68% 58%" },
+      { src: "assets/generated/medium/portfolio/media-new/newmedia-slide06-04.webp", thumbSrc: "assets/generated/thumbs/portfolio/media-new/newmedia-slide06-04.webp", alt: "新华社双语直播作品图 4", position: "center 23%" }
     ],
     links: [],
     excerpt:
@@ -500,9 +505,9 @@ const portfolioItems = [
     imageLayout: "grid",
     previewImageIndex: 2,
     images: [
-      { src: "assets/portfolio/media-new/newmedia-slide03-01.jpg", alt: "网易健康节目作品图 1", position: "center 18%" },
-      { src: "assets/portfolio/media-new/newmedia-slide03-02.jpg", alt: "网易健康节目作品图 2", position: "center 18%" },
-      { src: "assets/portfolio/media-new/newmedia-slide03-03.jpeg", alt: "网易健康节目作品图 3", position: "58% 68%" }
+      { src: "assets/generated/medium/portfolio/media-new/newmedia-slide03-01.webp", thumbSrc: "assets/generated/thumbs/portfolio/media-new/newmedia-slide03-01.webp", alt: "网易健康节目作品图 1", position: "center 18%" },
+      { src: "assets/generated/medium/portfolio/media-new/newmedia-slide03-02.webp", thumbSrc: "assets/generated/thumbs/portfolio/media-new/newmedia-slide03-02.webp", alt: "网易健康节目作品图 2", position: "center 18%" },
+      { src: "assets/generated/medium/portfolio/media-new/newmedia-slide03-03.webp", thumbSrc: "assets/generated/thumbs/portfolio/media-new/newmedia-slide03-03.webp", alt: "网易健康节目作品图 3", position: "58% 68%" }
     ],
     links: [],
     excerpt:
@@ -519,7 +524,7 @@ const portfolioItems = [
     coreIdea: "用传播数据、媒体反馈和舆情信号形成复盘闭环，辅助品牌判断下一步沟通方向。",
     result: "支持项目稳定落地，并在敏感议题期间输出风险提示与舆情分析。",
     imageType: "landscape",
-    images: [{ src: "assets/portfolio/events-slide09-01.jpg", alt: "壳牌品牌传播项目" }],
+    images: [{ src: "assets/generated/medium/portfolio/events-slide09-01.webp", thumbSrc: "assets/generated/thumbs/portfolio/events-slide09-01.webp", alt: "壳牌品牌传播项目" }],
     links: [],
     excerpt:
       "贡献重点：在传播执行之外承担监测与分析工作，帮助客户及时识别舆论风险。"
@@ -563,9 +568,9 @@ const portfolioItems = [
     imageLayout: "feature-grid",
     previewImageIndex: 1,
     images: [
-      { src: "assets/portfolio/jiangxi/wuyulun-cover.jpg", alt: "武育伦人物专稿配图", fit: "contain", position: "center" },
-      { src: "assets/portfolio/jiangxi/wanggang-cover.jpg", alt: "王刚人物专稿配图", position: "center 42%" },
-      { src: "assets/portfolio/jiangxi/zhangweibin-cover.jpg", alt: "张为彬人物专稿配图", fit: "contain", position: "center" }
+      { src: "assets/generated/medium/portfolio/jiangxi/wuyulun-cover.webp", thumbSrc: "assets/generated/thumbs/portfolio/jiangxi/wuyulun-cover.webp", alt: "武育伦人物专稿配图", fit: "contain", position: "center" },
+      { src: "assets/generated/medium/portfolio/jiangxi/wanggang-cover.webp", thumbSrc: "assets/generated/thumbs/portfolio/jiangxi/wanggang-cover.webp", alt: "王刚人物专稿配图", position: "center 42%" },
+      { src: "assets/generated/medium/portfolio/jiangxi/zhangweibin-cover.webp", thumbSrc: "assets/generated/thumbs/portfolio/jiangxi/zhangweibin-cover.webp", alt: "张为彬人物专稿配图", fit: "contain", position: "center" }
     ],
     links: [],
     pdfs: [
@@ -603,7 +608,7 @@ const portfolioItems = [
       "把创作者故事、作品风格和社群热点转化为可传播选题，提升小众文化内容的可读性。",
     result: "",
     imageType: "landscape",
-    images: [{ src: "assets/portfolio/media-new/acg-wuhu-card.jpg", alt: "二次元文化专题稿件头图" }],
+    images: [{ src: "assets/generated/medium/portfolio/media-new/acg-wuhu-card.webp", thumbSrc: "assets/generated/thumbs/portfolio/media-new/acg-wuhu-card.webp", alt: "二次元文化专题稿件头图" }],
     links: [
       {
         label: "美少女机甲还能这么画？24岁日本画师把机械兽娘画出了新高度！",
@@ -681,17 +686,17 @@ const portfolioItems = [
     imageLayout: "award-pair",
     images: [
       {
-        src: "assets/portfolio/ai-miaozhao-award-certificate.jpg",
+        src: "assets/generated/medium/portfolio/ai-miaozhao-award-certificate.webp", thumbSrc: "assets/generated/thumbs/portfolio/ai-miaozhao-award-certificate.webp",
         alt: "Tabbit 浏览器首届妙招脚本大赛优秀奖证书",
         fit: "contain"
       },
       {
-        src: "assets/portfolio/ai-off-work-countdown.jpg",
+        src: "assets/generated/medium/portfolio/ai-off-work-countdown.webp", thumbSrc: "assets/generated/thumbs/portfolio/ai-off-work-countdown.webp",
         alt: "下班倒计时浏览器插件界面截图",
         fit: "contain"
       },
       {
-        src: "assets/portfolio/ai-cat-desktop-pet.png",
+        src: "assets/generated/medium/portfolio/ai-cat-desktop-pet.webp", thumbSrc: "assets/generated/thumbs/portfolio/ai-cat-desktop-pet.webp",
         alt: "用自家猫做成的小猫桌宠浏览器插件",
         fit: "contain"
       }
@@ -714,7 +719,7 @@ const portfolioItems = [
     previewImageIndex: 0,
     images: [
       {
-        src: "assets/portfolio/ai-mingjing-dashboard.jpg",
+        src: "assets/generated/medium/portfolio/ai-mingjing-dashboard.webp", thumbSrc: "assets/generated/thumbs/portfolio/ai-mingjing-dashboard.webp",
         alt: "明镜项目过程指标数据自动化看板界面",
         fit: "contain"
       }
@@ -737,7 +742,7 @@ const portfolioItems = [
     previewImageIndex: 0,
     images: [
       {
-        src: "assets/portfolio/ai-violation-reporting-skill.jpg",
+        src: "assets/generated/medium/portfolio/ai-violation-reporting-skill.webp", thumbSrc: "assets/generated/thumbs/portfolio/ai-violation-reporting-skill.webp",
         alt: "OpenClaw 中 Violation-Reporting-Skill 的配置界面",
         fit: "contain"
       }
@@ -760,25 +765,25 @@ const portfolioItems = [
     previewImageIndex: 3,
     images: [
       {
-        src: "assets/portfolio/ai-poetry-detail-main.png",
+        src: "assets/generated/medium/portfolio/ai-poetry-detail-main.webp", thumbSrc: "assets/generated/thumbs/portfolio/ai-poetry-detail-main.webp",
         alt: "诗词背诵管理系统详情页：正文、笔记与背诵录音",
         position: "top",
         fit: "contain"
       },
       {
-        src: "assets/portfolio/ai-poetry-detail-list.png",
+        src: "assets/generated/medium/portfolio/ai-poetry-detail-list.webp", thumbSrc: "assets/generated/thumbs/portfolio/ai-poetry-detail-list.webp",
         alt: "诗词背诵管理系统首页：诗词列表、搜索和背诵状态",
         position: "top",
         fit: "contain"
       },
       {
-        src: "assets/portfolio/ai-poetry-detail-review.png",
+        src: "assets/generated/medium/portfolio/ai-poetry-detail-review.webp", thumbSrc: "assets/generated/thumbs/portfolio/ai-poetry-detail-review.webp",
         alt: "诗词背诵管理系统复习页：单篇复习与排序",
         position: "top",
         fit: "contain"
       },
       {
-        src: "assets/portfolio/ai-poetry-cover.png",
+        src: "assets/generated/medium/portfolio/ai-poetry-cover.webp", thumbSrc: "assets/generated/thumbs/portfolio/ai-poetry-cover.webp",
         alt: "诗词背诵管理系统卡片预览图",
         fit: "contain"
       }
@@ -801,7 +806,7 @@ const portfolioItems = [
     previewImageIndex: 0,
     images: [
       {
-        src: "assets/portfolio/ai-speed-reading-tool.jpg",
+        src: "assets/generated/medium/portfolio/ai-speed-reading-tool.webp", thumbSrc: "assets/generated/thumbs/portfolio/ai-speed-reading-tool.webp",
         alt: "AI倍速朗读工具界面：阅读材料管理与一键朗读",
         fit: "contain"
       }

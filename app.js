@@ -170,6 +170,34 @@ function renderAbout() {
     .join("");
 }
 
+function setupAboutReveal() {
+  const targets = Array.from(document.querySelectorAll("#about .content-card, #about .education-card"));
+  if (!targets.length) return;
+
+  targets.forEach((target, index) => {
+    target.classList.add("about-reveal");
+    target.style.animationDelay = `${Math.min(index * 90, 540)}ms`;
+  });
+
+  if (!("IntersectionObserver" in window)) {
+    targets.forEach((target) => target.classList.add("in-view"));
+    return;
+  }
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("in-view");
+        observer.unobserve(entry.target);
+      });
+    },
+    { threshold: 0.18, rootMargin: "0px 0px -8% 0px" }
+  );
+
+  targets.forEach((target) => observer.observe(target));
+}
+
 function renderExperienceDetailBody(company) {
   const [meituan, ...otherExperiences] = about.experiences;
   const [mingjingProject, aiProject] = about.highlights;
@@ -279,6 +307,15 @@ function renderLazyImage(src, alt, style = "", loading = "lazy") {
   return `<img class="lazy-media" src="${imagePlaceholder}" data-src="${src}" alt="${alt}" loading="${loading}" decoding="async"${style} />`;
 }
 
+function imageSource(image, mode = "detail") {
+  if (!image) return "";
+  return mode === "thumb" ? image.thumbSrc || image.src : image.src;
+}
+
+function renderLazyImageObject(image, mode = "detail", style = "", loading = "lazy") {
+  return renderLazyImage(imageSource(image, mode), image.alt, style, loading);
+}
+
 function setupLazyMedia(root = document) {
   const images = Array.from(root.querySelectorAll("img[data-src]:not([data-lazy-bound])"));
   if (!images.length) return;
@@ -330,7 +367,7 @@ function setupLazyMedia(root = document) {
 function renderImageButton(item, image, index, className) {
   return `
     <button class="${className} image-button" type="button" data-lightbox-id="${item.id}" data-image-index="${index}" aria-label="放大图片：${image.alt}">
-      ${renderLazyImage(image.src, image.alt, imageStyle(image))}
+      ${renderLazyImageObject(image, "detail", imageStyle(image))}
     </button>
   `;
 }
@@ -591,7 +628,7 @@ function renderPortfolioPreviewImage(item, className = "portfolio-preview-image"
 
   return `
     <div class="${className}">
-      ${renderLazyImage(image.src, image.alt, imageStyle(image))}
+      ${renderLazyImageObject(image, "thumb", imageStyle(image))}
     </div>
   `;
 }
@@ -606,11 +643,11 @@ function renderFeaturedMediaPreview(item) {
     return `
       <div class="featured-media-preview featured-hero-grid-preview">
         <div class="featured-hero-preview">
-          ${renderLazyImage(heroImage.src, heroImage.alt, imageStyle(heroImage))}
+          ${renderLazyImageObject(heroImage, "thumb", imageStyle(heroImage))}
         </div>
         <div class="featured-hero-thumb-grid">
           ${gridImages
-            .map((image) => `${renderLazyImage(image.src, image.alt, imageStyle(image))}`)
+            .map((image) => `${renderLazyImageObject(image, "thumb", imageStyle(image))}`)
             .join("")}
         </div>
       </div>
@@ -621,7 +658,7 @@ function renderFeaturedMediaPreview(item) {
     return `
       <div class="featured-media-preview featured-grid-preview ${item.imageLayout === "feature-grid" ? "feature-grid" : ""}">
         ${item.images
-          .map((image) => `${renderLazyImage(image.src, image.alt, imageStyle(image))}`)
+          .map((image) => `${renderLazyImageObject(image, "thumb", imageStyle(image))}`)
           .join("")}
       </div>
     `;
@@ -635,7 +672,7 @@ function renderFeaturedMediaPreview(item) {
           .map(
             (image, index) => `
               <figure class="award-pair-frame ${index === 0 ? "certificate-frame" : "plugin-frame"}">
-                ${renderLazyImage(image.src, image.alt, imageStyle(image))}
+                ${renderLazyImageObject(image, "thumb", imageStyle(image))}
               </figure>
             `
           )
@@ -648,12 +685,12 @@ function renderFeaturedMediaPreview(item) {
   return `
     <div class="featured-media-preview">
       <div class="featured-cover-preview">
-        ${renderLazyImage(cover.src, cover.alt, imageStyle(cover))}
+        ${renderLazyImageObject(cover, "thumb", imageStyle(cover))}
       </div>
       ${
         contentImages.length
           ? `<div class="featured-thumb-row">
-              ${contentImages.map((image) => `${renderLazyImage(image.src, image.alt, imageStyle(image))}`).join("")}
+              ${contentImages.map((image) => `${renderLazyImageObject(image, "thumb", imageStyle(image))}`).join("")}
             </div>`
           : ""
       }
@@ -888,7 +925,7 @@ function renderSkills() {
                 data-rotate="${cardMotion.rotate}"
                 aria-label="查看${item.title}"
               >
-                ${renderLazyImage(item.cover, item.title)}
+                ${renderLazyImage(item.coverThumb || item.cover, item.title)}
                 <span class="offwork-card-overlay"></span>
                 <span class="offwork-browser-bar" aria-hidden="true">
                   <span></span><span></span><span></span>
@@ -932,7 +969,7 @@ function openHobbyDetail(itemId) {
   if (item.video) {
     document.querySelector(".portfolio-detail-content").innerHTML = `
       <div class="hobby-video-detail">
-        <video controls autoplay playsinline>
+        <video controls playsinline preload="none" poster="${item.cover}">
           <source src="${item.video.src}" type="${item.video.type}" />
         </video>
       </div>
@@ -948,7 +985,7 @@ function openHobbyDetail(itemId) {
           .map(
             (image) => `
               <figure>
-                ${renderLazyImage(image.src, image.alt)}
+                ${renderLazyImageObject(image, "detail")}
               </figure>
             `
           )
@@ -1321,6 +1358,7 @@ function wireEvents() {
 }
 
 renderAbout();
+setupAboutReveal();
 renderPortfolio();
 renderSkills();
 renderContact();
