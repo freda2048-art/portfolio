@@ -84,6 +84,17 @@ a {
   font: inherit;
 }
 
+button {
+  appearance: none;
+  -webkit-appearance: none;
+  color: inherit;
+}
+
+img,
+video {
+  max-width: 100%;
+}
+
 button:focus-visible,
 a:focus-visible {
   outline: 2px solid rgba(246, 200, 79, 0.95);
@@ -1610,6 +1621,7 @@ h3 {
 .portfolio-featured-card,
 .portfolio-mini-card {
   width: 100%;
+  min-width: 0;
   border: 1px solid var(--line);
   background: var(--surface);
   box-shadow: var(--shadow);
@@ -1631,12 +1643,15 @@ h3 {
   display: grid;
   grid-template-columns: minmax(0, 1.08fr) minmax(300px, 0.92fr);
   min-height: 0;
+  min-width: 0;
   overflow: hidden;
   border-radius: 24px;
   padding: 0;
 }
 
 .portfolio-preview-image {
+  min-width: 0;
+  min-height: 0;
   overflow: hidden;
   background: rgba(233, 241, 252, 0.72);
 }
@@ -1645,6 +1660,7 @@ h3 {
   display: block;
   width: 100%;
   height: 100%;
+  max-width: 100%;
   object-fit: cover;
   transition: transform 260ms ease;
 }
@@ -1658,28 +1674,40 @@ h3 {
   display: grid;
   align-content: center;
   gap: 10px;
+  min-width: 0;
+  min-height: 0;
   padding: 14px;
+  overflow: hidden;
   background: rgba(233, 241, 252, 0.72);
 }
 
 .featured-cover-preview,
 .featured-thumb-row img,
 .featured-grid-preview img {
+  min-width: 0;
   overflow: hidden;
   border-radius: 14px;
   background: rgba(255, 255, 255, 0.78);
 }
 
+.featured-cover-preview {
+  min-width: 0;
+  max-height: 260px;
+}
+
 .featured-cover-preview img {
   display: block;
   width: 100%;
+  height: 100%;
   max-height: 260px;
+  max-width: 100%;
   object-fit: contain;
 }
 
 .featured-thumb-row {
   display: flex;
   gap: 8px;
+  min-width: 0;
   overflow-x: auto;
   padding-bottom: 2px;
 }
@@ -1693,8 +1721,11 @@ h3 {
 }
 
 .featured-grid-preview {
+  display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   align-content: stretch;
+  min-width: 0;
+  overflow: hidden;
 }
 
 .featured-grid-preview.feature-grid {
@@ -1704,16 +1735,20 @@ h3 {
 .featured-grid-preview img {
   width: 100%;
   height: clamp(170px, 18vw, 240px);
+  max-width: 100%;
   object-fit: cover;
   object-position: top;
 }
 
 .featured-hero-grid-preview {
   align-content: stretch;
+  min-width: 0;
+  overflow: hidden;
 }
 
 .featured-hero-preview,
 .featured-hero-thumb-grid img {
+  min-width: 0;
   overflow: hidden;
   border-radius: 14px;
   background: rgba(255, 255, 255, 0.78);
@@ -1723,6 +1758,7 @@ h3 {
   display: block;
   width: 100%;
   aspect-ratio: 2 / 1;
+  max-width: 100%;
   object-fit: contain;
   background: rgba(255, 255, 255, 0.84);
 }
@@ -1731,11 +1767,13 @@ h3 {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 8px;
+  min-width: 0;
 }
 
 .featured-hero-thumb-grid img {
   width: 100%;
   height: clamp(92px, 10vw, 128px);
+  max-width: 100%;
   object-fit: cover;
   object-position: center;
 }
@@ -1744,7 +1782,9 @@ h3 {
   grid-template-columns: 0.72fr 1.28fr;
   align-items: stretch;
   gap: 12px;
+  min-width: 0;
   min-height: 100%;
+  overflow: hidden;
 }
 
 .award-pair-frame {
@@ -1763,6 +1803,7 @@ h3 {
   display: block;
   width: 100%;
   height: 100%;
+  max-width: 100%;
   object-fit: contain;
   transition: transform 260ms ease;
 }
@@ -1779,6 +1820,7 @@ h3 {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  min-width: 0;
   padding: clamp(28px, 5vw, 58px);
 }
 
@@ -1843,12 +1885,14 @@ h3 {
 .portfolio-mini-card {
   display: grid;
   grid-template-rows: clamp(118px, 13vh, 156px) auto;
+  min-width: 0;
   overflow: hidden;
   border-radius: 18px;
   padding: 0;
 }
 
 .portfolio-mini-card > div:not(.portfolio-preview-image) {
+  min-width: 0;
   padding: 18px;
 }
 
