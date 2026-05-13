@@ -2,7 +2,6 @@ const profile = {
   name: "张紫彤",
   role: "内容策划｜品牌传播｜文化活动｜Plus AI",
   summary: "2年PR与文化传播经验，擅长跨团队传播项目与内容策划",
-  resumeUrl: "assets/resume.pdf",
   phone: "13319309366",
   email: "freda2048@163.com"
 };

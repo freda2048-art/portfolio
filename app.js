@@ -210,7 +210,7 @@ function renderExperience() {
           <ul>
             ${aiProject.points.map((point) => `<li>${formatLead(point)}</li>`).join("")}
           </ul>
-          ${portfolioLink("看看AI Coding作品示意↗", "ai", "portfolio")}
+          ${portfolioLink("看看AI Coding作品示意↗", "ai")}
         </section>
       </div>
     </div>
@@ -233,7 +233,7 @@ function renderExperience() {
           </ul>
           ${
             item.company === "新华社"
-              ? portfolioLink("看看媒体作品集↗", "media", "portfolio")
+              ? portfolioLink("看看媒体作品集↗", "media")
               : portfolioLink("看看项目↗", "event", "portfolio-event-shell-marathon")
           }
         </article>
@@ -894,9 +894,6 @@ function renderContact() {
     email.href = `mailto:${profile.email}`;
   }
 
-  document.querySelectorAll('a[download]').forEach((link) => {
-    link.href = profile.resumeUrl;
-  });
 }
 
 function openPortfolioDetail(itemId) {
@@ -1198,24 +1195,6 @@ function wireEvents() {
     if (event.key === "ArrowRight") stepLightbox(1);
   });
 
-  document.querySelectorAll('a[download]').forEach((link) => {
-    link.addEventListener("click", async (event) => {
-      if (window.location.protocol === "file:") {
-        return;
-      }
-
-      try {
-        const response = await fetch(link.href, { method: "HEAD" });
-        if (!response.ok) {
-          event.preventDefault();
-          showToast("请先将简历 PDF 命名为 resume.pdf 并放入 assets 文件夹。");
-        }
-      } catch {
-        event.preventDefault();
-        showToast("请先将简历 PDF 命名为 resume.pdf 并放入 assets 文件夹。");
-      }
-    });
-  });
 }
 
 renderAbout();
