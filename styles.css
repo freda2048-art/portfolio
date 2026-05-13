@@ -1642,6 +1642,7 @@ h3 {
   position: relative;
   display: grid;
   grid-template-columns: minmax(0, 1.08fr) minmax(300px, 0.92fr);
+  height: clamp(330px, 48vh, 430px);
   min-height: 0;
   min-width: 0;
   overflow: hidden;
@@ -1650,6 +1651,7 @@ h3 {
 }
 
 .portfolio-preview-image {
+  position: relative;
   min-width: 0;
   min-height: 0;
   overflow: hidden;
@@ -1657,6 +1659,8 @@ h3 {
 }
 
 .portfolio-preview-image img {
+  position: absolute;
+  inset: 0;
   display: block;
   width: 100%;
   height: 100%;
@@ -1674,6 +1678,7 @@ h3 {
   display: grid;
   align-content: center;
   gap: 10px;
+  height: 100%;
   min-width: 0;
   min-height: 0;
   padding: 14px;
@@ -1691,15 +1696,19 @@ h3 {
 }
 
 .featured-cover-preview {
+  position: relative;
   min-width: 0;
-  max-height: 260px;
+  height: clamp(190px, 28vh, 260px);
+  max-height: none;
 }
 
 .featured-cover-preview img {
+  position: absolute;
+  inset: 0;
   display: block;
   width: 100%;
   height: 100%;
-  max-height: 260px;
+  max-height: none;
   max-width: 100%;
   object-fit: contain;
 }
@@ -1716,6 +1725,7 @@ h3 {
   width: clamp(72px, 8vw, 112px);
   height: 92px;
   flex: 0 0 auto;
+  max-width: clamp(72px, 8vw, 112px);
   object-fit: cover;
   object-position: top;
 }
@@ -1724,6 +1734,7 @@ h3 {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   align-content: stretch;
+  height: 100%;
   min-width: 0;
   overflow: hidden;
 }
@@ -1734,7 +1745,8 @@ h3 {
 
 .featured-grid-preview img {
   width: 100%;
-  height: clamp(170px, 18vw, 240px);
+  height: 100%;
+  min-height: 0;
   max-width: 100%;
   object-fit: cover;
   object-position: top;
@@ -1742,6 +1754,8 @@ h3 {
 
 .featured-hero-grid-preview {
   align-content: stretch;
+  grid-template-rows: minmax(0, 1fr) auto;
+  height: 100%;
   min-width: 0;
   overflow: hidden;
 }
@@ -1757,7 +1771,9 @@ h3 {
 .featured-hero-preview img {
   display: block;
   width: 100%;
-  aspect-ratio: 2 / 1;
+  height: 100%;
+  min-height: 0;
+  aspect-ratio: auto;
   max-width: 100%;
   object-fit: contain;
   background: rgba(255, 255, 255, 0.84);
@@ -1767,12 +1783,13 @@ h3 {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 8px;
+  height: clamp(76px, 10vh, 108px);
   min-width: 0;
 }
 
 .featured-hero-thumb-grid img {
   width: 100%;
-  height: clamp(92px, 10vw, 128px);
+  height: 100%;
   max-width: 100%;
   object-fit: cover;
   object-position: center;
@@ -1782,6 +1799,7 @@ h3 {
   grid-template-columns: 0.72fr 1.28fr;
   align-items: stretch;
   gap: 12px;
+  height: 100%;
   min-width: 0;
   min-height: 100%;
   overflow: hidden;
@@ -1789,7 +1807,7 @@ h3 {
 
 .award-pair-frame {
   display: grid;
-  height: clamp(220px, 24vw, 320px);
+  height: 100%;
   min-width: 0;
   place-items: center;
   overflow: hidden;
@@ -1885,6 +1903,7 @@ h3 {
 .portfolio-mini-card {
   display: grid;
   grid-template-rows: clamp(118px, 13vh, 156px) auto;
+  height: 100%;
   min-width: 0;
   overflow: hidden;
   border-radius: 18px;
@@ -2840,7 +2859,8 @@ blockquote {
 
   .portfolio-featured-card {
     grid-template-columns: minmax(0, 1.05fr) minmax(280px, 0.95fr);
-    max-height: 338px;
+    height: clamp(318px, 48vh, 372px);
+    max-height: none;
   }
 
   .featured-media-preview {
@@ -2849,15 +2869,16 @@ blockquote {
   }
 
   .featured-hero-preview img {
-    aspect-ratio: 2.16 / 1;
+    height: 100%;
+    aspect-ratio: auto;
   }
 
   .featured-hero-thumb-grid img {
-    height: clamp(64px, 7vw, 90px);
+    height: 100%;
   }
 
   .award-pair-frame {
-    height: clamp(220px, 22vw, 300px);
+    height: 100%;
   }
 
   .portfolio-featured-copy {
@@ -2887,6 +2908,7 @@ blockquote {
 
   .portfolio-mini-card {
     grid-template-rows: 116px auto;
+    height: auto;
     min-height: 246px;
   }
 
@@ -3165,6 +3187,27 @@ blockquote {
     min-height: 0;
   }
 
+  .featured-media-preview {
+    height: auto;
+  }
+
+  .featured-cover-preview {
+    height: clamp(190px, 36vw, 240px);
+  }
+
+  .featured-grid-preview img {
+    height: clamp(150px, 22vw, 210px);
+  }
+
+  .featured-hero-grid-preview {
+    grid-template-rows: auto auto;
+  }
+
+  .featured-hero-preview img {
+    height: auto;
+    aspect-ratio: 2 / 1;
+  }
+
   .portfolio-stack {
     gap: 18px;
     padding-bottom: 0;
@@ -3216,6 +3259,12 @@ blockquote {
     min-height: 560px;
   }
 
+  .hero-portrait {
+    opacity: 1;
+    filter: none;
+    animation: none;
+  }
+
   .section-head.with-action,
   .contact-card {
     align-items: flex-start;
@@ -3265,7 +3314,12 @@ blockquote {
   }
 
   .featured-media-preview {
+    height: auto;
     padding: 10px;
+  }
+
+  .featured-cover-preview {
+    height: clamp(170px, 46vw, 210px);
   }
 
   .featured-award-pair-preview {
@@ -3279,7 +3333,8 @@ blockquote {
   }
 
   .featured-cover-preview img {
-    max-height: 210px;
+    height: 100%;
+    max-height: none;
   }
 
   .featured-thumb-row img {
@@ -3290,6 +3345,15 @@ blockquote {
   .featured-grid-preview,
   .featured-grid-preview.feature-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .featured-grid-preview img {
+    height: clamp(108px, 30vw, 150px);
+  }
+
+  .featured-hero-preview img {
+    height: auto;
+    aspect-ratio: 2 / 1;
   }
 
   .featured-hero-thumb-grid {
@@ -3364,6 +3428,9 @@ blockquote {
     width: min(68%, 280px);
     max-height: 68%;
     transform: translate(-50%, -44%);
+    opacity: 1;
+    filter: none;
+    animation: none;
   }
 
   .click-guide {
