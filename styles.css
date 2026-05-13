@@ -599,7 +599,20 @@ h3 {
 
 .timeline-item {
   position: relative;
+  display: block;
+  width: 100%;
+  border: 0;
   padding-left: 26px;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+  transition: transform 180ms ease, color 180ms ease;
+}
+
+.timeline-item:hover,
+.timeline-item:focus-visible {
+  color: var(--accent-dark);
+  transform: translateX(3px);
 }
 
 .timeline-item::before {
@@ -649,6 +662,15 @@ h3 {
 .contact-card p {
   color: var(--muted);
   line-height: 1.7;
+}
+
+.timeline-item::after {
+  display: inline-flex;
+  margin-top: 6px;
+  color: var(--blue);
+  content: "查看详情";
+  font-size: 12px;
+  font-weight: 750;
 }
 
 .tag-cloud {
@@ -1287,6 +1309,20 @@ h3 {
   gap: 18px;
 }
 
+.experience-detail-body {
+  display: grid;
+  gap: 14px;
+  padding: 22px;
+}
+
+.experience-detail-body .meituan-card {
+  grid-column: auto;
+}
+
+.experience-detail-body .compact-experience {
+  width: 100%;
+}
+
 .experience-snapshot {
   display: flex;
   flex-wrap: wrap;
@@ -1548,6 +1584,7 @@ h3 {
 }
 
 .portfolio-category-panel {
+  --portfolio-panel-scale: 1;
   position: sticky;
   top: 94px;
   z-index: calc(10 + var(--panel-index));
@@ -1561,7 +1598,8 @@ h3 {
     linear-gradient(145deg, rgba(255, 255, 255, 0.94), rgba(239, 246, 255, 0.9)),
     var(--surface);
   box-shadow: 0 26px 82px rgba(31, 60, 96, 0.14);
-  transform: translateY(calc(var(--panel-index) * 3px));
+  transform: translateY(calc(var(--panel-index) * 3px)) scale(var(--portfolio-panel-scale));
+  transform-origin: top center;
 }
 
 .portfolio-panel-head {
@@ -2934,6 +2972,31 @@ blockquote {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
+}
+
+@media (min-width: 901px) and (max-height: 820px) {
+  .portfolio-stack {
+    padding-bottom: 18vh;
+  }
+
+  .portfolio-category-panel {
+    --portfolio-panel-scale: 0.92;
+    margin-bottom: clamp(18px, 6vh, 44px);
+  }
+}
+
+@media (min-width: 901px) and (max-height: 740px) {
+  .portfolio-category-panel {
+    --portfolio-panel-scale: 0.84;
+    top: 82px;
+  }
+}
+
+@media (min-width: 901px) and (max-height: 660px) {
+  .portfolio-category-panel {
+    --portfolio-panel-scale: 0.76;
+    top: 76px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

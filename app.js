@@ -139,14 +139,14 @@ function renderAbout() {
   list.innerHTML = about.experiences
     .map(
       (item) => `
-        <article class="timeline-item">
+        <button class="timeline-item" type="button" data-experience-detail="${item.company}">
           <span class="dot"></span>
           <div class="timeline-title-row">
             <h4>${item.company}</h4>
             <small>${item.date}</small>
           </div>
           <p>${item.title}</p>
-        </article>
+        </button>
       `
     )
     .join("");
@@ -169,78 +169,93 @@ function renderAbout() {
     .join("");
 }
 
-function renderExperience() {
+function renderExperienceDetailBody(company) {
   const [meituan, ...otherExperiences] = about.experiences;
   const [mingjingProject, aiProject] = about.highlights;
   const mingjingResult = mingjingProject.points[mingjingProject.points.length - 1];
-  document.getElementById("experienceList").innerHTML = `
-    <div class="meituan-experience-block">
-      <article class="experience-card meituan-card">
-        <div class="experience-card-head">
-          <div>
-            <p class="meituan-company-name">${meituan.company}</p>
-            <h3>${meituan.title}</h3>
-            <p class="experience-date">${meituan.date}</p>
-          </div>
-        </div>
-        <p>${formatLead(meituan.summary)}</p>
-        <details class="experience-disclosure">
-          <summary>展开工作细节</summary>
-          <ul>
-            ${meituan.details.map((detail) => `<li>${appendExperienceLink(detail)}</li>`).join("")}
-          </ul>
-        </details>
-      </article>
-      <div class="meituan-project-grid">
-        <section class="supplement-card mingjing-project">
-          <p class="card-kicker">${mingjingProject.date}</p>
-          <h4><span>美团项目一</span>${mingjingProject.title}</h4>
-          <p>${formatLead(mingjingProject.points[0])}</p>
-          <p class="project-result">${formatLead(mingjingResult)}</p>
-          <details class="experience-disclosure compact">
-            <summary>展开项目细节</summary>
-            <ul>
-              ${mingjingProject.points.slice(1, -1).map((point) => `<li>${formatLead(point)}</li>`).join("")}
-            </ul>
-          </details>
-        </section>
-        <section class="supplement-card ai-project">
-          <p class="card-kicker">${aiProject.date}</p>
-          <h4><span>美团项目二</span>${aiProject.title}</h4>
-          <ul>
-            ${aiProject.points.map((point) => `<li>${formatLead(point)}</li>`).join("")}
-          </ul>
-          ${portfolioLink("看看AI Coding作品示意↗", "ai")}
-        </section>
-      </div>
-    </div>
-  `;
 
-  document.getElementById("experienceList").innerHTML += `<div class="other-experience-grid">`
-    + otherExperiences
-    .map(
-      (item) => `
-        <article class="experience-card compact-experience">
+  if (company === meituan.company) {
+    return `
+      <div class="experience-detail-body">
+        <article class="experience-card meituan-card">
           <div class="experience-card-head">
             <div>
-              <p class="other-company-name">${item.company}</p>
-              <h3>${item.title}</h3>
-              <p class="experience-date">${item.date}</p>
+              <p class="meituan-company-name">${meituan.company}</p>
+              <h3>${meituan.title}</h3>
+              <p class="experience-date">${meituan.date}</p>
             </div>
           </div>
+          <p>${formatLead(meituan.summary)}</p>
           <ul class="visible-experience-details">
-            ${item.details.map((detail) => `<li>${formatLead(detail)}</li>`).join("")}
+            ${meituan.details.map((detail) => `<li>${appendExperienceLink(detail)}</li>`).join("")}
           </ul>
-          ${
-            item.company === "新华社"
-              ? portfolioLink("看看媒体作品集↗", "media")
-              : portfolioLink("看看项目↗", "event", "portfolio-event-shell-marathon")
-          }
         </article>
-      `
-    )
-    .join("")
-    + `</div>`;
+        <div class="meituan-project-grid">
+          <section class="supplement-card mingjing-project">
+            <p class="card-kicker">${mingjingProject.date}</p>
+            <h4><span>美团项目一</span>${mingjingProject.title}</h4>
+            <p>${formatLead(mingjingProject.points[0])}</p>
+            <p class="project-result">${formatLead(mingjingResult)}</p>
+            <details class="experience-disclosure compact">
+              <summary>展开项目细节</summary>
+              <ul>
+                ${mingjingProject.points.slice(1, -1).map((point) => `<li>${formatLead(point)}</li>`).join("")}
+              </ul>
+            </details>
+          </section>
+          <section class="supplement-card ai-project">
+            <p class="card-kicker">${aiProject.date}</p>
+            <h4><span>美团项目二</span>${aiProject.title}</h4>
+            <ul>
+              ${aiProject.points.map((point) => `<li>${formatLead(point)}</li>`).join("")}
+            </ul>
+            ${portfolioLink("看看AI Coding作品示意↗", "ai")}
+          </section>
+        </div>
+      </div>
+    `;
+  }
+
+  const item = otherExperiences.find((entry) => entry.company === company);
+  if (!item) return "";
+
+  return `
+    <div class="experience-detail-body">
+      <article class="experience-card compact-experience">
+        <div class="experience-card-head">
+          <div>
+            <p class="other-company-name">${item.company}</p>
+            <h3>${item.title}</h3>
+            <p class="experience-date">${item.date}</p>
+          </div>
+        </div>
+        <ul class="visible-experience-details">
+          ${item.details.map((detail) => `<li>${formatLead(detail)}</li>`).join("")}
+        </ul>
+        ${
+          item.company === "新华社"
+            ? portfolioLink("看看媒体作品集↗", "media")
+            : portfolioLink("看看项目↗", "event", "portfolio-event-shell-marathon")
+        }
+      </article>
+    </div>
+  `;
+}
+
+function setDetailHeading(eyebrow, title) {
+  const eyebrowNode = document.querySelector(".portfolio-detail-header .eyebrow");
+  if (eyebrowNode) eyebrowNode.textContent = eyebrow;
+  document.getElementById("portfolioDetailTitle").textContent = title;
+}
+
+function openExperienceDetail(company) {
+  const item = about.experiences.find((entry) => entry.company === company);
+  if (!item) return;
+
+  setDetailHeading("Experience Detail", `${item.company}｜${item.title}`);
+  document.querySelector(".portfolio-detail-content").innerHTML = renderExperienceDetailBody(company);
+  document.querySelector(".portfolio-detail-modal").hidden = false;
+  document.body.classList.add("locked");
 }
 
 function renderPortfolioTabs() {
@@ -819,7 +834,7 @@ function openHobbyDetail(itemId) {
   const item = hobbies.cards.find((entry) => entry.id === itemId);
   if (!item) return;
 
-  document.getElementById("portfolioDetailTitle").textContent = item.title;
+  setDetailHeading("Hobby Detail", item.title);
   if (item.video) {
     document.querySelector(".portfolio-detail-content").innerHTML = `
       <div class="hobby-video-detail">
@@ -900,7 +915,7 @@ function openPortfolioDetail(itemId) {
   const item = portfolioItems.find((entry) => entry.id === itemId);
   if (!item) return;
 
-  document.getElementById("portfolioDetailTitle").textContent = item.title;
+  setDetailHeading("Portfolio Detail", item.title);
   document.querySelector(".portfolio-detail-content").innerHTML = renderPortfolioDetailBody(item);
   document.querySelector(".portfolio-detail-modal").hidden = false;
   document.body.classList.add("locked");
@@ -1111,12 +1126,6 @@ function wireEvents() {
     button.addEventListener("click", () => setSection(button.dataset.sectionJump));
   });
 
-  document.querySelectorAll("[data-portfolio-jump]").forEach((button) => {
-    button.addEventListener("click", () =>
-      openPortfolioCategory(button.dataset.portfolioJump, button.dataset.portfolioTarget || "")
-    );
-  });
-
   document.querySelector(".brand").addEventListener("click", (event) => {
     event.preventDefault();
     setSection("home");
@@ -1135,9 +1144,22 @@ function wireEvents() {
       scheduleRouteRefresh();
     }
 
+    const portfolioJumpButton = event.target.closest("[data-portfolio-jump]");
+    if (portfolioJumpButton) {
+      if (!document.querySelector(".portfolio-detail-modal").hidden) closePortfolioDetail();
+      openPortfolioCategory(portfolioJumpButton.dataset.portfolioJump, portfolioJumpButton.dataset.portfolioTarget || "");
+      return;
+    }
+
     const detailButton = event.target.closest("[data-portfolio-detail]");
     if (detailButton) {
       openPortfolioDetail(detailButton.dataset.portfolioDetail);
+      return;
+    }
+
+    const experienceDetailButton = event.target.closest("[data-experience-detail]");
+    if (experienceDetailButton) {
+      openExperienceDetail(experienceDetailButton.dataset.experienceDetail);
       return;
     }
 
@@ -1198,7 +1220,6 @@ function wireEvents() {
 }
 
 renderAbout();
-renderExperience();
 renderPortfolio();
 renderSkills();
 renderContact();
