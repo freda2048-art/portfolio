@@ -664,15 +664,6 @@ h3 {
   line-height: 1.7;
 }
 
-.timeline-item::after {
-  display: inline-flex;
-  margin-top: 6px;
-  color: var(--blue);
-  content: "查看详情";
-  font-size: 12px;
-  font-weight: 750;
-}
-
 .tag-cloud {
   display: flex;
   flex-wrap: wrap;
@@ -2972,31 +2963,6 @@ blockquote {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
-}
-
-@media (min-width: 901px) and (max-height: 820px) {
-  .portfolio-stack {
-    padding-bottom: 18vh;
-  }
-
-  .portfolio-category-panel {
-    --portfolio-panel-scale: 0.92;
-    margin-bottom: clamp(18px, 6vh, 44px);
-  }
-}
-
-@media (min-width: 901px) and (max-height: 740px) {
-  .portfolio-category-panel {
-    --portfolio-panel-scale: 0.84;
-    top: 82px;
-  }
-}
-
-@media (min-width: 901px) and (max-height: 660px) {
-  .portfolio-category-panel {
-    --portfolio-panel-scale: 0.76;
-    top: 76px;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {

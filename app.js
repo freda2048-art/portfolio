@@ -7,6 +7,7 @@ const state = {
   hobbySceneReady: false,
   hobbySceneTicking: false,
   articles: {},
+  portfolioScaleTicking: false,
   autoScrollStops: [],
   route: {
     points: [],
@@ -754,6 +755,42 @@ function renderPortfolio() {
     </div>
   `;
   setupAutoScrollers();
+  schedulePortfolioPanelScale();
+}
+
+function updatePortfolioPanelScale() {
+  const panels = document.querySelectorAll(".portfolio-category-panel");
+  if (!panels.length) return;
+
+  if (window.innerWidth <= 900) {
+    panels.forEach((panel) => {
+      panel.style.removeProperty("--portfolio-panel-scale");
+      panel.style.removeProperty("top");
+    });
+    return;
+  }
+
+  const viewportHeight = window.innerHeight;
+  const headerHeight = header.getBoundingClientRect().height;
+  const topGap = Math.round(headerHeight + Math.min(24, Math.max(14, viewportHeight * 0.024)));
+  const bottomGap = Math.round(Math.min(72, Math.max(36, viewportHeight * 0.07)));
+  const availableHeight = Math.max(360, viewportHeight - topGap - bottomGap);
+
+  panels.forEach((panel) => {
+    const rawHeight = Math.max(panel.offsetHeight, panel.scrollHeight);
+    const scale = Math.max(0.62, Math.min(1, availableHeight / rawHeight));
+    panel.style.top = `${topGap}px`;
+    panel.style.setProperty("--portfolio-panel-scale", scale.toFixed(3));
+  });
+}
+
+function schedulePortfolioPanelScale() {
+  if (state.portfolioScaleTicking) return;
+  state.portfolioScaleTicking = true;
+  window.requestAnimationFrame(() => {
+    updatePortfolioPanelScale();
+    state.portfolioScaleTicking = false;
+  });
 }
 
 function renderSkills() {
@@ -1201,6 +1238,10 @@ function wireEvents() {
       closePortfolioDetail();
     }
   });
+
+  window.addEventListener("resize", schedulePortfolioPanelScale);
+  window.addEventListener("orientationchange", schedulePortfolioPanelScale);
+  window.addEventListener("load", schedulePortfolioPanelScale);
 
   document.addEventListener("keydown", (event) => {
     if (!document.querySelector(".portfolio-detail-modal").hidden && event.key === "Escape") {
